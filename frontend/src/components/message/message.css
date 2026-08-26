@@ -1,0 +1,40 @@
+/* dificil darle estilos a los mensajes */
+:host {
+  display: block;
+}
+:host(.send) {
+  text-align: right;
+}
+
+label.receive {
+  color: #a5a5a5;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+  display: block;
+}
+label.send {
+  display: none;
+}
+.message-container {
+  text-align: start;
+  display: inline-block;
+  max-width: 80%;
+  border: none;
+  border-radius: 4px;
+  padding: 16px;
+}
+div.receive {
+  background-color: #d8d8d8;
+}
+div.send {
+  background-color: #b9e97c;
+}
+
+.text {
+  color: black;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 18px;
+  margin: 0;
+}

@@ -1,0 +1,27 @@
+.content-section {
+  padding: 16px 32px;
+  position: relative;
+  /* 60px es lo que mide el header, 32px es el paddin de abajo que no lo toma */
+  height: calc(100vh - 60px - 32px);
+}
+.content-section__title {
+  margin: 0;
+}
+h3 {
+  margin: 0;
+}
+.messages-container {
+  /* 132 es lo que mide el form */
+  /* 32px es el padding de abajo */
+  /* 45px es el espacio para el titulo */
+  /* 23px es el espacio del id */
+  height: calc(100% - 132px - 32px - 45px - 23px);
+  overflow-y: auto;
+}
+.message-form-container {
+  position: absolute;
+  /* 32px es el padding de abajo */
+  bottom: 32px;
+  /* 32px de padding por lado * 2 = 64px */
+  width: calc(100% - 64px);
+}
