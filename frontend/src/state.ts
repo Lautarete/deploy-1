@@ -66,7 +66,9 @@ export const state = {
       });
     });
   },
-  apiBaseURL: "http://localhost:3001",
+  // apiBaseURL: "http://localhost:3001",
+  apiBaseURL: "https://deploy-1-wk9w.onrender.com/",
+
   // crear todo lo que permite hacer el backend
   createNewMessage(messageText: string) {
     // crear un mensaje con los usuarios de prueba

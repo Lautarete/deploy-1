@@ -15,7 +15,7 @@ function runAPI() {
     path: "../.env",
   });
   const server = express();
-  const PORT = 3001;
+  const PORT = process.env.PORT || 3001;
   // esto es para poder usar json
   server.use(express.json());
   server.use(cors());
