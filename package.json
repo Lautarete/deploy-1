@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pnpm --filter backend run dev",
+    "build": "pnpm --filter backend run build && pnpm --filter frontend run build",
+    "deploy": "pnpm --filter backend run deploy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.25.0",
   "dependencies": {
-    "deploy": "link:",
-    "dotenv": "^17.4.2"
+    "deploy": "link:"
   }
 }

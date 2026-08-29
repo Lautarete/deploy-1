@@ -5,15 +5,27 @@ import "dotenv/config";
 import { initializeApp, cert, ServiceAccount } from "firebase-admin/app";
 import { getDatabase } from "firebase-admin/database";
 import { getFirestore } from "firebase-admin/firestore";
+import { configDotenv } from "dotenv";
+import path from "path";
+import { request } from "http";
 // import serviceAccount from "./key.json";
 
 function runAPI() {
+  configDotenv({
+    path: "../.env",
+  });
   const server = express();
   const PORT = 3001;
   // esto es para poder usar json
   server.use(express.json());
   server.use(cors());
-
+  // console.log("cwd:", process.cwd());
+  // console.log("projectId:", process.env.FIREBASE_PROJECT_ID);
+  // console.log("clientEmail:", process.env.FIREBASE_CLIENT_EMAIL);
+  // console.log(
+  //   "privateKey:",
+  //   process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  // );
   initializeApp({
     credential: cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
@@ -22,14 +34,18 @@ function runAPI() {
     } as ServiceAccount),
     databaseURL: "https://apx-00-default-rtdb.firebaseio.com",
   });
+
   const db = getDatabase();
   const firestore = getFirestore();
 
   const firestoreUsersRef = firestore.collection("users");
 
-  server.get("/", (request, response) => {
-    response.send("No se pidió nada desde GET");
-  });
+  // en produccion este archivo deberia quedar en un /dist tambien, x lo que la ruta sera distinta
+  // if ("ver que estemos en desarrollo") {
+  // }
+  // este problema
+  const frontendPath = path.join(process.cwd(), "..", "frontend", "dist");
+  server.use(express.static(frontendPath));
 
   // MESSAGES
 
@@ -206,6 +222,10 @@ function runAPI() {
         Error: "User ID isn´t a string",
       });
     }
+  });
+
+  server.get("/*splat", (request, response) => {
+    response.sendFile(path.join(frontendPath, "index.html"));
   });
 
   server.listen(PORT, () => {
