@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "pnpm --filter backend run dev",
+    "install": "pnpm --filter backend install && pnpm --filter frontend install",
     "build": "pnpm --filter backend run build && pnpm --filter frontend run build",
     "deploy": "pnpm --filter backend run deploy"
   },
